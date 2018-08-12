@@ -60,7 +60,7 @@ $base_URL = "https://freeforcharity.secure.force.com/Volunteer/GW_Volunteers__Pe
 $Record_ID = get_the_author_meta('SalesforceID', $user->ID);
 $Target_URL = $base_URL . $Record_ID;
 
-return sprintf( '<iframe src="%1$s"
+return sprintf( '<p>%1$s</p><iframe src="%1$s"
   height="%2$s"
   width="%3$s"
   frameborder="0"
