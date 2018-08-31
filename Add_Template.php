@@ -1,11 +1,4 @@
 <?php
-/*
-Plugin Name: Page Template Plugin : 'Good To Be Bad'
-Plugin URI: http://www.wpexplorer.com/wordpress-page-templates-plugin/
-Version: 1.1.0
-Author: WPExplorer
-Author URI: http://www.wpexplorer.com/
-*/
 
 class PageTemplater {
 
@@ -75,7 +68,7 @@ class PageTemplater {
 
 		// Add your templates to this array.
 		$this->templates = array(
-			'template.php' => 'It\'s Good to Be Bad',
+			'template.php' => 'Volunteer Site',
 		);
 			
 	} 

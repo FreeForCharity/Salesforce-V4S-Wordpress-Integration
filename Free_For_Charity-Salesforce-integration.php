@@ -5,6 +5,8 @@ author: Gavin Glowacki
 */
 add_action( 'show_user_profile', 'ffc_show_SalesforceID' );
 add_action( 'edit_user_profile', 'ffc_show_SalesforceID' );
+add_action('user_new_form','ffc_show_SalesforceID');
+
 
 function ffc_show_SalesforceID( $user ){
   $Record_ID = get_the_author_meta('SalesforceID', $user->ID);
@@ -56,11 +58,16 @@ function ffc_iframe_shortcode( $atts ) {
     ),
     $atts
 );
+$user_id = get_current_user_id();
 $base_URL = "https://freeforcharity.secure.force.com/Volunteer/GW_Volunteers__PersonalSiteContactInfo?contactId=";
-$Record_ID = get_the_author_meta('SalesforceID', $user->ID);
+$Record_ID = get_user_meta($user_id,'SalesforceID', true);
 $Target_URL = $base_URL . $Record_ID;
 
-return sprintf( '<p>%1$s</p><iframe src="%1$s"
+if(empty($Record_ID)){
+  return sprintf('<p>Error: Invalid Salesforce ID please contact your administrator</p>');
+}
+
+return sprintf( '<iframe src="%1$s"
   height="%2$s"
   width="%3$s"
   frameborder="0"
@@ -72,4 +79,6 @@ return sprintf( '<p>%1$s</p><iframe src="%1$s"
   );
 }
 add_shortcode( 'volunteer_site', 'ffc_iframe_shortcode' );
+
+include 'Add_Template.php';
 ?>
